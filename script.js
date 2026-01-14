@@ -10,7 +10,7 @@ const hourOptions = Array.from(
 
 const updateButtonStatus = () => {
   const rowCount = document.querySelectorAll(".row-item").length;
-  if (rowCount >= 5) {
+  if (rowCount >= 10) {
     addBtn.disabled = true;
     limitMsg.classList.remove("hidden");
   } else {
