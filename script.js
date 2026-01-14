@@ -38,7 +38,7 @@ document.querySelector('select[name="hours"]').innerHTML = hourOptions;
 
 addBtn.addEventListener("click", () => {
   const rowCount = document.querySelectorAll(".row-item").length;
-  if (rowCount < 5) {
+  if (rowCount < 10) {
     const newRow = document.createElement("div");
     newRow.className =
       "row-item grid grid-cols-1 md:grid-cols-12 gap-3 items-end p-4 bg-white rounded-xl border border-gray-100 relative shadow-sm mt-4";
