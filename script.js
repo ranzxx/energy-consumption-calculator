@@ -1,8 +1,6 @@
 const container = document.getElementById("electronicsContainer");
 const addBtn = document.getElementById("addRow");
 const limitMsg = document.getElementById("limitMessage");
-const shareBtn = document.getElementById("shareBtn");
-const modal = document.getElementById("qrModal");
 const hourOptions = Array.from(
   { length: 24 },
   (_, i) => `<option value="${i + 1}">${i + 1} Jam</option>`
@@ -16,21 +14,6 @@ const updateButtonStatus = () => {
   } else {
     addBtn.disabled = false;
     limitMsg.classList.add("hidden");
-  }
-};
-
-// Modal Functions
-shareBtn.addEventListener("click", () => {
-  modal.style.display = "flex";
-});
-
-function closeModal() {
-  modal.style.display = "none";
-}
-
-window.onclick = function (event) {
-  if (event.target == modal) {
-    closeModal();
   }
 };
 
