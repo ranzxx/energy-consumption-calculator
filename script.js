@@ -117,4 +117,4 @@ document
     const resultSection = document.getElementById("resultSection");
     resultSection.classList.remove("hidden");
     resultSection.scrollIntoView({ behavior: "smooth" });
-  });
+});
