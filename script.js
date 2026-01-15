@@ -1,10 +1,15 @@
 const container = document.getElementById("electronicsContainer");
 const addBtn = document.getElementById("addRow");
 const limitMsg = document.getElementById("limitMessage");
-const hourOptions = Array.from(
-  { length: 24 },
-  (_, i) => `<option value="${i + 1}">${i + 1} Jam</option>`
-).join("");
+
+// Pilihan waktu: 30 menit (0.5 jam) + 1-24 jam
+const hourOptions = `
+            <option value="0.5">30 Menit</option>
+            ${Array.from(
+              { length: 24 },
+              (_, i) => `<option value="${i + 1}">${i + 1} Jam</option>`
+            ).join("")}
+        `;
 
 const updateButtonStatus = () => {
   const rowCount = document.querySelectorAll(".row-item").length;
@@ -17,6 +22,7 @@ const updateButtonStatus = () => {
   }
 };
 
+// Inisialisasi dropdown untuk baris pertama
 document.querySelector('select[name="hours"]').innerHTML = hourOptions;
 
 addBtn.addEventListener("click", () => {
@@ -35,7 +41,7 @@ addBtn.addEventListener("click", () => {
                         <input type="number" name="watt" placeholder="0" required class="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none">
                     </div>
                     <div class="md:col-span-3">
-                        <label class="text-xs font-semibold text-gray-500 block mb-1">Lama (Jam)</label>
+                        <label class="text-xs font-semibold text-gray-500 block mb-1">Lama Penggunaan</label>
                         <select name="hours" required class="w-full px-3 py-2 border rounded-lg text-sm bg-white focus:ring-2 focus:ring-blue-500 outline-none">${hourOptions}</select>
                     </div>
                     <div class="md:col-span-1 text-right">
@@ -76,6 +82,8 @@ document
       const wh = w * h;
       totalWh += wh;
 
+      const labelDurasi = h === 0.5 ? "30 Menit" : h + " Jam";
+
       tableHTML += `
                     <tr class="border-b border-gray-100 hover:bg-gray-50">
                         <td class="px-4 py-3 text-sm font-medium">${
@@ -84,7 +92,7 @@ document
                         <td class="px-4 py-3 text-sm text-center">${formatID(
                           w
                         )} W</td>
-                        <td class="px-4 py-3 text-sm text-center">${h} Jam</td>
+                        <td class="px-4 py-3 text-sm text-center">${labelDurasi}</td>
                         <td class="px-4 py-3 text-sm text-right font-semibold">${formatID(
                           wh
                         )} Wh</td>
